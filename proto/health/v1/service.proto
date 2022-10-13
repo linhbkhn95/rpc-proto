@@ -4,7 +4,7 @@ package health.v1;
 
 import "google/api/annotations.proto";
 
-option go_package = "github/linkbhn95/rpc-service/go/health/v1";
+option go_package = "github.com/linkbhn95/rpc-service/go/health/v1";
 
 // HealthService ...
 service HealthService {

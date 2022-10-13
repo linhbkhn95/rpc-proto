@@ -4,7 +4,7 @@ package example.v1;
 
 import "google/api/annotations.proto";
 
-option go_package = "github/linhbkhn95/rpc-service/go/example/v1";
+option go_package = "github.com/linhbkhn95/rpc-service/go/example/v1";
 
 
 // ExampleService is a service provide some communicate basic.

@@ -1,4 +1,4 @@
-module github/linhbkhn95/rpc-proto
+module github.com/linhbkhn95/rpc-proto
 
 go 1.18
 
