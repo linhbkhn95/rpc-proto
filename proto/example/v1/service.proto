@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package example.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "github/linhbkhn95/rpc-service/go/example/v1";
+
+
+// ExampleService is a service provide some communicate basic.
+service ExampleService {
+  // SayHello will send hello term to server.
+  rpc SayHello (SayHelloRequest) returns (SayHelloResponse) {
+    option (google.api.http) = {
+        post: "/api/v1/say-hello"
+        body: "*"
+    };
+  }
+
+  // SayGoodbye will send goodbye term to server.
+  rpc SayGoodbye (SayGoodbyeRequest) returns (SayGoodbyeResponse) {
+    option (google.api.http) = {
+        post: "/api/v1/say-goodbye"
+        body: "*"
+    };
+  }
+}
+
+// SayHelloRequest defines a hello request term.
+message SayHelloRequest{
+  string msg = 1;
+}
+
+// SayHelloResponse ...
+message SayHelloResponse {
+  string msg = 1;
+}
+
+// SayGoodbyeRequest ...
+message SayGoodbyeRequest {
+  string msg = 1;
+}
+
+// SayGoodbyeResponse ...
+message SayGoodbyeResponse {
+    string msg = 1;
+}

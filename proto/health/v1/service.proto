@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package health.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "github/linkbhn95/rpc-service/go/health/v1";
+
+// HealthService ...
+service HealthService {
+  // Ready ...
+  rpc Ready (ReadyRequest) returns (ReadyResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/ready"
+      body: "*"
+    };
+  }
+}
+
+// ReadyRequest ...
+message ReadyRequest{
+}
+
+// ReadyResponse ...
+message ReadyResponse {
+}
+
