@@ -1,0 +1,19 @@
+version: v1
+name: buf.build/linhbkhn95/rpc-proto
+deps:
+  - buf.build/googleapis/googleapis
+  - buf.build/gogo/protobuf
+  - buf.build/envoyproxy/protoc-gen-validate:0e25aabb25c0709aff19aea176a1da13328b12fb
+  - buf.build/grpc-ecosystem/grpc-gateway
+
+lint:
+  use:
+    - DEFAULT
+    - FILE_LOWER_SNAKE_CASE
+    - COMMENT_SERVICE
+    - COMMENT_RPC
+    - COMMENT_MESSAGE
+    - COMMENT_ENUM
+breaking:
+  use:
+    - FILE
