@@ -3,7 +3,7 @@ concurrency:
   group: ci-workflow-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 env:
-  GO_VERSION: 1.18
+  GO_VERSION: 1.19
 
 on:
   workflow_dispatch:
@@ -12,22 +12,6 @@ on:
       - master
 
 jobs:
-  golangci-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{ env.GO_VERSION }}
-      - name: lint
-        uses: golangci/golangci-lint-action@v3.1.0
-        with:
-          version: latest
-          # skip cache because of flaky behaviors
-          skip-build-cache: true
-          skip-pkg-cache: true
-
   check-proto-lint:
     name: Run proto lint
     runs-on: ubuntu-latest  
@@ -42,3 +26,17 @@ jobs:
       - name: Running linter, checking breaking changes
         run: |
           buf lint
+
+  check-generate:
+    runs-on: ubuntu-latest
+   
+    needs:
+      - check-proto-lint
+
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: bufbuild/buf-setup-action@v1.6.0
+      - name: generate proto
+        run: make generate-proto
