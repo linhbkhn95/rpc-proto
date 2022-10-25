@@ -61,7 +61,6 @@ jobs:
             git clone https://user:${{ env.GITHUB_TOKEN }}@github.com/linhbkhn95/${{ env.RPC_SERVICE_REPO }}
             cp -R pb/* ${{ env.RPC_SERVICE_REPO }}
             cd ${{ env.RPC_SERVICE_REPO }}
-            go mod init github.com/linhbkhn95/${{ env.RPC_SERVICE_REPO }}
             go mod tidy
             echo "git status `git status`"
             
