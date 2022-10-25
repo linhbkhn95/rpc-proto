@@ -3,6 +3,7 @@ syntax = "proto3";
 package example.v1;
 
 import "google/api/annotations.proto";
+import "gogoproto/gogo.proto";
 
 option go_package = "github.com/linhbkhn95/rpc-service/go/example/v1";
 
@@ -28,7 +29,7 @@ service ExampleService {
 
 // SayHelloRequest defines a hello request term.
 message SayHelloRequest{
-  string msg = 1;
+  string msg = 1 [(gogoproto.jsontag)="msg"];
 }
 
 // SayHelloResponse ...
